@@ -16,9 +16,15 @@
       "illuminate/http":"^7.0",
       "illuminate/routing":"^7.0",
       "illuminate/support":"^7.0",
-      "philkra/elastic-apm-php-agent":"^7.0",
+      "rchh/elastic-apm-php-agent":"dev-master",
       "ramsey/uuid":"^3.0"
    },
+   "repositories": [
+      {
+         "type": "vcs",
+         "url": "https://github.com/rchh/elastic-apm-php-agent"
+      }
+   ],
    "require-dev":{  
       "phpunit/phpunit":"6.*"
    },
