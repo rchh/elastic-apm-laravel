@@ -64,7 +64,15 @@ class RecordTransaction
             'type' => 'HTTP'
         ]);
 
-        $transaction->setSpans(app('query-log')->toArray());
+        
+        foreach (app('query-log') as $query) {
+            $span = new \PhilKra\Events\Span($query['name'], $transaction);
+            $span->setDuration($query['duration']);
+            $span->setCustomContext($query['context']);
+            $span->setStacktrace($query['stacktrace']->toArray());
+
+            $this->agent->putEvent($span);
+        }
 
         if (config('elastic-apm.transactions.use_route_uri')) {
             $transaction->setTransactionName($this->getRouteUriTransactionName($request));
