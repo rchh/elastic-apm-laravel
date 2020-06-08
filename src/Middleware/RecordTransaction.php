@@ -97,7 +97,7 @@ class RecordTransaction
             $this->agent->send();
         }
         catch(\Throwable $t) {
-            Log::error($t);
+        //    Log::error($t);
         }
     }
 
